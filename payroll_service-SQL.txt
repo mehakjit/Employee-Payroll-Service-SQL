@@ -351,4 +351,16 @@ Query OK, 1 row affected (0.2331 sec)
 
 
 
+-----------------------------------------------------------ER DIAGRAM AND NORMALISATION IMPLEMENTED------------------------------------------------------------------
+
+#UC10 - draw the ER diagram for payroll_service DB
+----------------------------------------------------
+
+ER diagram for payroll service DB added in the folder payroll_service_sql
+
+
+
+
+
+
 --------------------------------------xxxxxxxxxxxxxxxxxxxxx-------------------------------------
