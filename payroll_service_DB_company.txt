@@ -1,0 +1,18 @@
+#UC11 ----- company table of payroll_service DB
+-----------------------------------------------
+MySQL  localhost:33060+ ssl  payroll_service  SQL > CREATE TABLE company (
+                                                  -> company_id INT NOT NULL ,
+                                                  -> company_name VARCHAR(250) NOT NULL,
+                                                  -> PRIMARY KEY (employee_ID)
+                                                  -> );
+Query OK, 0 rows affected (1.4300 sec)
+
+MySQL  localhost:33060+ ssl  payroll_service  SQL > DESCRIBE company;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| company_id   | int          | NO   | PRI | NULL    |       |
+| company_name | varchar(250) | NO   |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+2 rows in set (0.0857 sec)
+

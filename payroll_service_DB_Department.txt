@@ -1,0 +1,16 @@
+#UC11 - department table of payroll_service DB
+----------------------------------------------
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > CREATE TABLE department(
+                                                  -> dept_ID INT NOT NULL,
+                                                  -> dept_name VARCHAR(100) NOT NULL,
+                                                  -> PRIMARY KEY(dept_ID)
+                                                  -> );
+Query OK, 0 rows affected (0.5527 sec)
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > DESCRIBE department;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| dept_ID   | int          | NO   | PRI | NULL    |       |
+| dept_name | varchar(100) | NO   |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+2 rows in set (0.1210 sec)

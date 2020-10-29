@@ -1,0 +1,16 @@
+#Uc11 - employee department table of payroll_service DB
+-------------------------------------------------------
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > CREATE TABLE employee_department( 
+						  -> employee_id INT REFERENCES employee(employee_id),
+						  -> dept_ID INT REFERENCES department(dept_ID),
+						  -> FOREIGN KEY(employee_id) REFERENCES employee(employee_id) 	 
+						  -> );
+Query OK, 0 rows affected (1.2814 sec)
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > DESCRIBE employee_department;
++-------------+------+------+-----+---------+-------+
+| Field       | Type | Null | Key | Default | Extra |
++-------------+------+------+-----+---------+-------+
+| employee_id | int  | YES  | MUL | NULL    |       |
+| dept_ID     | int  | YES  | MUL | NULL    |       |
++-------------+------+------+-----+---------+-------+
+2 rows in set (0.0719 sec)

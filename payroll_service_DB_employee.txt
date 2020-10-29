@@ -1,0 +1,25 @@
+#Uc11 - employee table of payroll_service DB
+--------------------------------------------
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > CREATE TABLE employee (
+                                                  -> employee_id INT unsigned NOT NULL,
+                                                  -> company_id INT REFERENCES company(company_id),
+                                                  -> name VARCHAR(100) NOT NULL,
+                                                  -> phone_no VARCHAR(200) NOT NULL,
+                                                  -> address VARCHAR(250) NOT NULL DEFAULT 'TBD',
+                                                  -> gender CHAR(1) NOT NULL
+                                                  -> PRIMARY KEY(employee_id),
+					          -> FOREIGN KEY(company_id) REFERENCES company(company_id)
+                                                  -> );
+Query OK, 0 rows affected (0.6408 sec)
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > DESCRIBE employee;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| company_id  | int          | YES  | MUL | NULL    |       |
+| name        | varchar(100) | NO   |     | NULL    |       |
+| phone_no    | varchar(200) | NO   |     | NULL    |       |
+| address     | varchar(250) | NO   |     | TBD     |       |
+| gender      | char(1)      | NO   |     | NULL    |       |
+| employee_id | int          | NO   | PRI | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+6 rows in set (0.0037 sec)

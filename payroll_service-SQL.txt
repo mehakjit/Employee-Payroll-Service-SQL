@@ -356,7 +356,13 @@ Query OK, 1 row affected (0.2331 sec)
 #UC10 - draw the ER diagram for payroll_service DB
 ----------------------------------------------------
 
-ER diagram for payroll service DB added in the folder payroll_service_sql
+ER diagram for payroll service DB added in the folder payroll_service_SQL
+
+
+#UC11 ----- implement the ER diagram into payroll_service DB 
+------------------------------------------------------------
+
+company, employee, employee_department, department and payroll added to the folder payroll_service_SQl and git
 
 
 

@@ -1,0 +1,23 @@
+#UC11 - payroll table of payroll_service DB
+-------------------------------------------
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > CREATE TABLE payroll (
+                                                  -> id INT REFERENCES employee(id),
+                                                  -> basic_pay DOUBLE NOT NULL,
+                                                  -> deductions DOUBLE NOT NULL,
+                                                  -> taxable_pay DOUBLE NOT NULL,
+                                                  -> tax DOUBLE NOT NULL,
+                                                  -> net_pay DOUBLE NOT NULL
+                                                  -> );
+Query OK, 0 rows affected (1.2098 sec)
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > DESCRIBE payroll;
++-------------+--------+------+-----+---------+-------+
+| Field       | Type   | Null | Key | Default | Extra |
++-------------+--------+------+-----+---------+-------+
+| employee_id | int    | YES  | MUL | NULL    |       |
+| basic_pay   | double | NO   |     | NULL    |       |
+| deductions  | double | NO   |     | NULL    |       |
+| taxable_pay | double | NO   |     | NULL    |       |
+| tax         | double | NO   |     | NULL    |       |
+| net_pay     | double | NO   |     | NULL    |       |
++-------------+--------+------+-----+---------+-------+
+6 rows in set (0.0791 sec)
