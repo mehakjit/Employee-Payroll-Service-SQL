@@ -296,4 +296,59 @@ Records: 0  Duplicates: 0  Warnings: 0
  
 
 
+
+#UC10 ----- ability to make Terissa as part of sales and marketing department
+-----------------------------------------------------------------------------
+
+---- ADDING TERISSA into employee_payroll table ----------
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > INSERT INTO employee_payroll VALUES  ('6','Terissa','NULL','NULL','TBD','F','3000000.00','0','0','0','0','2019-11-13');
+Query OK, 1 row affected (0.2674 sec)
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > SELECT * FROM employee_payroll;
++----+-----------+----------+---------+------------+--------+-----------+------------+-------------+-----+---------+------------+
+| id | name      | phone_no | address | department | gender | basic_pay | deductions | taxable_pay | tax | net_pay | start      |
++----+-----------+----------+---------+------------+--------+-----------+------------+-------------+-----+---------+------------+
+|  1 | Bill      | NULL     | NULL    |            | M      |   3000000 |          0 |           0 |   0 |       0 | 2018-01-03 |
+|  2 | Mark      | NULL     | NULL    |            | M      |    200000 |          0 |           0 |   0 |       0 | 2019-11-13 |
+|  3 | Charlie   | NULL     | NULL    |            | M      |    300000 |          0 |           0 |   0 |       0 | 2020-05-21 |
+|  4 | Charlotte | NULL     | NULL    |            | F      |    400000 |          0 |           0 |   0 |       0 | 2020-07-07 |
+|  5 | Eva       | NULL     | NULL    |            | F      |    500000 |          0 |           0 |   0 |       0 | 2019-07-09 |
+|  6 | Terissa   | NULL     | NULL    | TBD        | F      |   3000000 |          0 |           0 |   0 |       0 | 2019-11-13 |
++----+-----------+----------+---------+------------+--------+-----------+------------+-------------+-----+---------+------------+
+6 rows in set (0.0213 sec)
+
+MySQL  localhost:33060+ ssl  payroll_service  SQL > UPDATE employee_payroll SET department = 'Sales' WHERE name='Terissa';
+Query OK, 1 row affected (0.2099 sec)
+
+Rows matched: 1  Changed: 1  Warnings: 0
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > SELECT * FROM employee_payroll;
++----+-----------+----------+---------+------------+--------+-----------+------------+-------------+-----+---------+------------+
+| id | name      | phone_no | address | department | gender | basic_pay | deductions | taxable_pay | tax | net_pay | start      |
++----+-----------+----------+---------+------------+--------+-----------+------------+-------------+-----+---------+------------+
+|  1 | Bill      | NULL     | NULL    |            | M      |   3000000 |          0 |           0 |   0 |       0 | 2018-01-03 |
+|  2 | Mark      | NULL     | NULL    |            | M      |    200000 |          0 |           0 |   0 |       0 | 2019-11-13 |
+|  3 | Charlie   | NULL     | NULL    |            | M      |    300000 |          0 |           0 |   0 |       0 | 2020-05-21 |
+|  4 | Charlotte | NULL     | NULL    |            | F      |    400000 |          0 |           0 |   0 |       0 | 2020-07-07 |
+|  5 | Eva       | NULL     | NULL    |            | F      |    500000 |          0 |           0 |   0 |       0 | 2019-07-09 |
+|  6 | Terissa   | NULL     | NULL    | Sales      | F      |   3000000 |          0 |           0 |   0 |       0 | 2019-11-13 |
++----+-----------+----------+---------+------------+--------+-----------+------------+-------------+-----+---------+------------+
+6 rows in set (0.0019 sec)
+
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > INSERT INTO employee_payroll VALUES ('7','Terissa','NULL','NULL','Marketing','F',3000000,1000000,200000,500000,1500000,'2018-01-13');
+Query OK, 1 row affected (0.2331 sec)
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > SELECT * FROM employee_payroll;
++----+-----------+----------+---------+------------+--------+-----------+------------+-------------+--------+---------+------------+
+| id | name      | phone_no | address | department | gender | basic_pay | deductions | taxable_pay | tax    | net_pay | start      |
++----+-----------+----------+---------+------------+--------+-----------+------------+-------------+--------+---------+------------+
+|  1 | Bill      | NULL     | NULL    |            | M      |   3000000 |          0 |           0 |      0 |       0 | 2018-01-03 |
+|  2 | Mark      | NULL     | NULL    |            | M      |    200000 |          0 |           0 |      0 |       0 | 2019-11-13 |
+|  3 | Charlie   | NULL     | NULL    |            | M      |    300000 |          0 |           0 |      0 |       0 | 2020-05-21 |
+|  4 | Charlotte | NULL     | NULL    |            | F      |    400000 |          0 |           0 |      0 |       0 | 2020-07-07 |
+|  5 | Eva       | NULL     | NULL    |            | F      |    500000 |          0 |           0 |      0 |       0 | 2019-07-09 |
+|  6 | Terissa   | NULL     | NULL    | Sales      | F      |   3000000 |          0 |           0 |      0 |       0 | 2019-11-13 |
+|  7 | Terissa   | NULL     | NULL    | Marketing  | F      |   3000000 |    1000000 |      200000 | 500000 | 1500000 | 2018-01-13 |
++----+-----------+----------+---------+------------+--------+-----------+------------+-------------+--------+---------+------------+
+7 rows in set (0.0582 sec)
+
+
+
 --------------------------------------xxxxxxxxxxxxxxxxxxxxx-------------------------------------
