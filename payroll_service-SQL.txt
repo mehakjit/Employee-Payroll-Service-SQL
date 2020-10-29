@@ -241,4 +241,59 @@ MySQL  localhost:33060+ ssl  payroll_service  SQL > describe employee_payroll;
 8 rows in set (1.1988 sec)
 
 
+
+#UC9 -----  ability to extend employee_payroll table to have basic pay , deductions , taxable pay , income tax and net pay
+--------------------------------------------------------------------------------------------------------------------------
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > ALTER TABLE employee_payroll RENAME COLUMN salary TO basic_pay;
+Query OK, 0 rows affected (1.8164 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > ALTER TABLE employee_payroll ADD deductions Double NOT NULL AFTER basic_pay;
+Query OK, 0 rows affected (2.1088 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > ALTER TABLE employee_payroll ADD taxable_pay DOUBLE NOT NULL AFTER deductions;
+Query OK, 0 rows affected (2.8977 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > ALTER TABLE employee_payroll ADD tax DOUBLE NOT NULL AFTER taxable_pay;
+Query OK, 0 rows affected (1.6075 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > ALTER TABLE employee_payroll ADD net_pay DOUBLE NOT NULL AFTER tax;
+Query OK, 0 rows affected (1.6697 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > describe employee_payroll;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| id          | int unsigned | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(150) | NO   |     | NULL    |                |
+| phone_no    | varchar(250) | YES  |     | NULL    |                |
+| address     | varchar(250) | YES  |     | TBD     |                |
+| department  | varchar(250) | NO   |     | NULL    |                |
+| gender      | char(1)      | YES  |     | NULL    |                |
+| basic_pay   | double       | NO   |     | NULL    |                |
+| deductions  | double       | NO   |     | NULL    |                |
+| taxable_pay | double       | NO   |     | NULL    |                |
+| tax         | double       | NO   |     | NULL    |                |
+| net_pay     | double       | NO   |     | NULL    |                |
+| start       | date         | NO   |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+12 rows in set (0.1379 sec)
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > select * from employee_payroll;
++----+-----------+----------+---------+------------+--------+-----------+------------+-------------+-----+---------+------------+
+| id | name      | phone_no | address | department | gender | basic_pay | deductions | taxable_pay | tax | net_pay | start      |
++----+-----------+----------+---------+------------+--------+-----------+------------+-------------+-----+---------+------------+
+|  1 | Bill      | NULL     | NULL    |            | M      |   3000000 |          0 |           0 |   0 |       0 | 2018-01-03 |
+|  2 | Mark      | NULL     | NULL    |            | M      |    200000 |          0 |           0 |   0 |       0 | 2019-11-13 |
+|  3 | Charlie   | NULL     | NULL    |            | M      |    300000 |          0 |           0 |   0 |       0 | 2020-05-21 |
+|  4 | Charlotte | NULL     | NULL    |            | F      |    400000 |          0 |           0 |   0 |       0 | 2020-07-07 |
+|  5 | Eva       | NULL     | NULL    |            | F      |    500000 |          0 |           0 |   0 |       0 | 2019-07-09 |
++----+-----------+----------+---------+------------+--------+-----------+------------+-------------+-----+---------+------------+
+5 rows in set (0.0803 sec)
+ 
+
+
 --------------------------------------xxxxxxxxxxxxxxxxxxxxx-------------------------------------
