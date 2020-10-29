@@ -23,3 +23,26 @@ Query OK, 0 rows affected (0.6408 sec)
 | employee_id | int          | NO   | PRI | NULL    |       |
 +-------------+--------------+------+-----+---------+-------+
 6 rows in set (0.0037 sec)
+
+
+
+
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > INSERT INTO employee VALUES
+                                                  -> (1,'Bill','91 9999999890','variable','M',11),
+                                                  -> (1,'Terisa','91 9876543210','variable2','F',12),
+                                                  -> (1,'Charlie','91 9878998789','variable3','M',13),
+                                                  -> (2,'Mark','91 9898989898','constant1','M',21);
+Query OK, 4 rows affected (0.3220 sec)
+
+Records: 4  Duplicates: 0  Warnings: 0
+MySQL  localhost:33060+ ssl  payroll_service  SQL > SELECT * FROM EMPLOYEE;
++------------+---------+---------------+-----------+--------+-------------+
+| company_id | name    | phone_no      | address   | gender | employee_id |
++------------+---------+---------------+-----------+--------+-------------+
+|          1 | Bill    | 91 9999999890 | variable  | M      |          11 |
+|          1 | Terisa  | 91 9876543210 | variable2 | F      |          12 |
+|          1 | Charlie | 91 9878998789 | variable3 | M      |          13 |
+|          2 | Mark    | 91 9898989898 | constant1 | M      |          21 |
++------------+---------+---------------+-----------+--------+-------------+
+4 rows in set (0.0020 sec)
+ MySQ

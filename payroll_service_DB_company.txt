@@ -16,3 +16,21 @@ MySQL  localhost:33060+ ssl  payroll_service  SQL > DESCRIBE company;
 +--------------+--------------+------+-----+---------+-------+
 2 rows in set (0.0857 sec)
 
+
+
+
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > INSERT INTO company VALUES
+                                                  -> (1, 'Oracle'),
+                                                  -> (2, 'Microsoft');
+Query OK, 2 rows affected (0.1466 sec)
+
+Records: 2  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > SELECT * FROM company;
++------------+--------------+
+| company_id | company_name |
++------------+--------------+
+|          1 | Oracle       |
+|          2 | Microsoft    |
++------------+--------------+
+2 rows in set (0.0024 sec)
+

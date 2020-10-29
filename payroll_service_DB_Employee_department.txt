@@ -14,3 +14,18 @@ Query OK, 0 rows affected (1.2814 sec)
 | dept_ID     | int  | YES  | MUL | NULL    |       |
 +-------------+------+------+-----+---------+-------+
 2 rows in set (0.0719 sec)
+
+
+MySQL  localhost:33060+ ssl  payroll_service  SQL > ALTER TABLE employee_department
+                                                  -> ADD PRIMARY KEY(employee_id,dept_id);
+Query OK, 0 rows affected (4.3166 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > DESCRIBE employee_department;
++-------------+------+------+-----+---------+-------+
+| Field       | Type | Null | Key | Default | Extra |
++-------------+------+------+-----+---------+-------+
+| employee_id | int  | NO   | PRI | NULL    |       |
+| dept_ID     | int  | NO   | PRI | NULL    |       |
++-------------+------+------+-----+---------+-------+
+2 rows in set (0.0543 sec)

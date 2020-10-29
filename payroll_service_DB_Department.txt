@@ -14,3 +14,23 @@ Query OK, 0 rows affected (0.5527 sec)
 | dept_name | varchar(100) | NO   |     | NULL    |       |
 +-----------+--------------+------+-----+---------+-------+
 2 rows in set (0.1210 sec)
+
+
+
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > INSERT INTO department VALUES
+                                                  -> (8,'Sales'),
+                                                  -> (9,'Marketing'),
+                                                  -> (7,'HR');
+Query OK, 3 rows affected (0.1974 sec)
+
+Records: 3  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > SELECT * FROM department;
++---------+-----------+
+| dept_ID | dept_name |
++---------+-----------+
+|       7 | HR        |
+|       8 | Sales     |
+|       9 | Marketing |
++---------+-----------+
+3 rows in set (0.0014 sec)
+

@@ -366,6 +366,116 @@ company, employee, employee_department, department and payroll added to the fold
 
 
 
+#UC12 --------- retrieve queries UC4 , UC5 abd UC7 according to new table structure
+-----------------------------------------------------------------------------------
+
+Query UC4---
+------------
+Records: 4  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > SELECT * FROM PAYROLL;
++-------------+-----------+------------+-------------+------+---------+
+| employee_id | basic_pay | deductions | taxable_pay | tax  | net_pay |
++-------------+-----------+------------+-------------+------+---------+
+|          11 |     10000 |        500 |        1000 |  500 |    9000 |
+|          12 |     20000 |       1000 |        2000 | 1000 |   18000 |
+|          13 |     30000 |       2000 |        4000 | 2000 |   26000 |
+|          21 |     40000 |       3000 |        6000 | 3000 |   34000 |
++-------------+-----------+------------+-------------+------+---------+
+4 rows in set (0.0022 sec)
+
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > SELECT * FROM employee_department;
++-------------+---------+
+| employee_id | dept_ID |
++-------------+---------+
+|          11 |       7 |
+|          12 |       8 |
+|          13 |       7 |
+|          21 |       9 |
++-------------+---------+
+4 rows in set (0.0012 sec)
+
+MySQL  localhost:33060+ ssl  payroll_service  SQL > SELECT * FROM EMPLOYEE;
++------------+---------+---------------+-----------+--------+-------------+
+| company_id | name    | phone_no      | address   | gender | employee_id |
++------------+---------+---------------+-----------+--------+-------------+
+|          1 | Bill    | 91 9999999890 | variable  | M      |          11 |
+|          1 | Terisa  | 91 9876543210 | variable2 | F      |          12 |
+|          1 | Charlie | 91 9878998789 | variable3 | M      |          13 |
+|          2 | Mark    | 91 9898989898 | constant1 | M      |          21 |
++------------+---------+---------------+-----------+--------+-------------+
+4 rows in set (0.0020 sec)
+
+
+MySQL  localhost:33060+ ssl  payroll_service  SQL > SELECT * FROM department;
++---------+-----------+
+| dept_ID | dept_name |
++---------+-----------+
+|       7 | HR        |
+|       8 | Sales     |
+|       9 | Marketing |
++---------+-----------+
+3 rows in set (0.0014 sec)
+
+
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > SELECT * FROM company;
++------------+--------------+
+| company_id | company_name |
++------------+--------------+
+|          1 | Oracle       |
+|          2 | Microsoft    |
++------------+--------------+
+2 rows in set (0.0024 sec)
+
+
+Queries UC5 and UC7--
+---------------------
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > SELECT SUM(p.net_pay) FROM employee e left join payroll p ON p.employee_id = e.employee_id GROUP BY e.gender;
++----------------+
+| SUM(p.net_pay) |
++----------------+
+|          69000 |
+|          18000 |
++----------------+
+2 rows in set (0.1153 sec)
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > SELECT AVG(p.net_pay) FROM employee e LEFT JOIN payroll p ON p.employee_id = e.employee_id GROUP BY e.gender;
++----------------+
+| AVG(p.net_pay) |
++----------------+
+|          23000 |
+|          18000 |
++----------------+
+2 rows in set (0.0023 sec)
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > SELECT MAX(p.net_pay) FROM employee e LEFT JOIN payroll p ON p.employee_id = e.employee_id GROUP BY e.gender;
++----------------+
+| MAX(p.net_pay) |
++----------------+
+|          34000 |
+|          18000 |
++----------------+
+2 rows in set (0.0685 sec)
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > SELECT MIN(p.net_pay) FROM employee e LEFT JOIN payroll p ON p.employee_id = e.employee_id GROUP BY e.gender;
++----------------+
+| MIN(p.net_pay) |
++----------------+
+|           9000 |
+|          18000 |
++----------------+
+2 rows in set (0.0019 sec)
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > SELECT p.net_pay FROM employee e LEFT JOIN payroll p ON e.employee_id = p.employee_id WHERE e.gender = 'F';
++---------+
+| net_pay |
++---------+
+|   18000 |
++---------+
+1 row in set (0.0016 sec)
+ MySQL  localhost:33060+ ssl  payroll_service  SQL > SELECT gender , COUNT(employee_id) FROM employee GROUP BY gender;
++--------+--------------------+
+| gender | COUNT(employee_id) |
++--------+--------------------+
+| M      |                  3 |
+| F      |                  1 |
++--------+--------------------+
+2 rows in set (0.0625 sec)
 
 
 
